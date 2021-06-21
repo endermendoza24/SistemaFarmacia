@@ -1,68 +1,68 @@
 ﻿using System;
+using SistemaDeFarmacia.Data;
+using SistemaDeFarmacia.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SistemaDeFarmacia.Data;
-using SistemaDeFarmacia.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace SistemaDeFarmacia.Controllers
 {
-    public class CategoriaController : Controller
+    public class PersonalController : Controller
     {
         private readonly DbFarmaciaContext _db;
-        // GET: Categoria
-        public CategoriaController(DbFarmaciaContext db)
+        public PersonalController(DbFarmaciaContext db)
         {
             _db = db;
         }
-        public IActionResult Index()
+
+        public IActionResult index()
         {
             return View();
         }
-        public ActionResult CrearCategoria()
+
+        // GET: Personal
+        public ActionResult CrearPersonal()
         {
             return View();
         }
-        [HttpPost] 
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CrearCategoria(CategoriaMedicamento Cat)
+
+        public async Task<IActionResult> CrearPersonal(Personal Per)
         {
-            if(ModelState.IsValid) // valida si el modelo es correcto
+            if(ModelState.IsValid)
             {
-                await _db.CategoriaMedicamento.AddAsync(Cat); //  con esto se envía a la base de datos
-                await _db.SaveChangesAsync(); //  Guarda de forma asincrónica todos los cambios realizados en este contexto en la base de datos subyacente.
-                return RedirectToAction((nameof(CrearCategoria))); //  esto redirecciona a la vista correspondiente
+                await _db.Personal.AddAsync(Per);
+                await _db.SaveChangesAsync();
+                return RedirectToAction((nameof(CrearPersonal)));
             }
-            return View(Cat); //  si los datos están malos retorna la vista con los datos
+            return View(Per);
         }
 
         [HttpGet]
         public async Task<IActionResult> MostrarTodos()
         {
-            var todas = await _db.CategoriaMedicamento.ToListAsync();
+            var todas = await _db.Personal.ToListAsync();
             return Json(new { data = todas });
         }
 
-
-
-
-
-        // GET: Categoria/Details/5
+        // GET: Personal/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Categoria/Create
+        // GET: Personal/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Categoria/Create
+        // POST: Personal/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -79,13 +79,13 @@ namespace SistemaDeFarmacia.Controllers
             }
         }
 
-        // GET: Categoria/Edit/5
+        // GET: Personal/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Categoria/Edit/5
+        // POST: Personal/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -102,13 +102,13 @@ namespace SistemaDeFarmacia.Controllers
             }
         }
 
-        // GET: Categoria/Delete/5
+        // GET: Personal/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Categoria/Delete/5
+        // POST: Personal/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
