@@ -1,17 +1,16 @@
-﻿@model  Medicamentos
+﻿@model Laboratorio
 @{
-    ViewData["Title"] = "CrearMedicamentos";
+    ViewData["Title"] = "Laboratorio";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    //List<SelectListItem> li = new List<SelectListItem>();
-    //li.Add(new SelectListItem() { Text="Apple", Value="20"});
 }
 
+<h2>Laboratorio</h2>
 
 <div class="row" style="width:100%" ;>
     <div class="col-6">
-        <h2 class="text-primary">Lista de medicamentos</h2>
+        <h2 class="text-primary">Laboratorios</h2>
         <div class="col-4 text-right">
-            <button type="button" class="btn btn-info form-control" data-toggle="modal" data-target="#MiModal">Agregar nuevo medicamento</button>
+            <button type="button" class="btn btn-info form-control" data-toggle="modal" data-target="#MiModal">Agregar nuevo laboratorio</button>
         </div>
 
     </div>
@@ -22,12 +21,12 @@
     <table id="TblDatos" class="table table-bordered table-responsive-xl" style="width: 95%">
         <thead class="thead-dark">
             <tr class="table-info">
-                <td>Codigo Medicamento</td>
-                <td>Nombre genérico</td>
-                <td>Estado</td>
-                <td>Via de administración</td>
-                <td>Id Categoria</td>
-                <td>Id inventario</td>
+                <td>Código laboratorio</td>
+                <td>Nombre Laboratorio</td>
+                <td>Telefono laboratorio</td>
+                <td>Dirección laboratorio</td>
+                <td>Email laboratorio</td>
+                <td>Politicas de vencimiento del laboratorio</td>                
                 <td></td>
             </tr>
         </thead>
@@ -43,7 +42,7 @@
         <div class=" modal-content">
             <form method="post" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h2 class="modal-title text-primary text-center">Ingreso de nuevo medicamento</h2>
+                    <h2 class="modal-title text-primary text-center">Agregar nuevo laboratorio</h2>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -53,36 +52,38 @@
                         </div>
                         <div class="form-row" style="padding-top:14px;">
                             <div class="form-group col-md-6">
-                                <label>Nombre Medicamento</label>
-                                <input asp-for="NombreGenerico" class="form-control" placeholder="Nombre genérico" /> @*De donde sale todo eso?*@
-                                <span asp-validation-for="NombreGenerico" class="text-danger"></span>
+                                <label>Nombre laboratorio</label>
+                                <input asp-for="NombreLaboratorio" class="form-control" placeholder="Nombre laboratorio" /> @*De donde sale todo eso?*@
+                                <span asp-validation-for="NombreLaboratorio" class="text-danger"></span>
                             </div>
-                            <!--Estado-->
+                            <!--Telefono laboratorio-->
                             <div class="form-group col-md-6">
-                                <label>Estado</label>
-                                <input asp-for="Estado" class="form-control" placeholder="Estado" /> @*De donde sale todo eso?*@
-                                <span asp-validation-for="Estado" class="text-danger"></span>
+                                <label>Teléfono laboratorio</label>
+                                <input type="tel" asp-for="TelefonoLaboratorio" class="form-control" placeholder="Teléfono laboratorio" /> @*De donde sale todo eso?*@
+                                <span asp-validation-for="TelefonoLaboratorio" class="text-danger"></span>
                             </div>
 
-                            <!--Via de administracion-->
+                            <!--Dirección Laboratorio-->
                             <div class="form-group col-md-6">
-                                <label>Via de administración</label>
-                                <input asp-for="ViaAdministracion" class="form-control" placeholder="Via de administración" /> @*De donde sale todo eso?*@
-                                <span asp-validation-for="ViaAdministracion" class="text-danger"></span>
+                                <label>Dirección laboratorio</label>
+                                <input asp-for="Direccion" class="form-control" placeholder="Dirección del laboratorio" /> @*De donde sale todo eso?*@
+                                <span asp-validation-for="Direccion" class="text-danger"></span>
                             </div>
-                            <!--Ide categoria-->
+                            <!--Email-->
                             <div class="form-group col-md-6">
-                                <label>Ide categoria</label>
-                                <input asp-for="IdCategoria" class="form-control" placeholder="Ide categoria " /> @*De donde sale todo eso?*@
-                                <span asp-validation-for="NombreGenerico" class="text-danger"></span>
+                                <label>Email de laboratorio</label>
+                                <input asp-for="EmailLab" class="form-control" placeholder="Emial del laboratorio" /> @*De donde sale todo eso?*@
+                                <span asp-validation-for="EmailLab" class="text-danger"></span>
                             </div>
-                            <!--Id inventario-->
+                            <!--Politicas de vencimiento-->
                             <div class="form-group col-md-6">
-                                <label>Id inventario</label>
-                                <input asp-for="IdInventario" class="form-control" placeholder="Id inventario" /> @*De donde sale todo eso?*@
-                                <span asp-validation-for="IdInventario" class="text-danger"></span>
+                                <label>Politicas de vencimiento</label>
+                                <input asp-for="PoliticasDeVencimiento" class="form-control" placeholder="Políticas de vencimiento del laboratorio" /> @*De donde sale todo eso?*@
+                                <span asp-validation-for="PoliticasDeVencimiento" class="text-danger"></span>
                             </div>
-                            
+
+
+
                             @*si llevara otro campo*@
                             @*<div class="form-group col-md-6">
             <label>Nombre</label>
@@ -111,6 +112,3 @@
         </div>
 
     </div>
-
-    <h2>CrearMedicamentos</h2>
-

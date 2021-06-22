@@ -7,6 +7,8 @@ namespace SistemaDeFarmacia.Models
 {
     public partial class Medicamentos
     {
+      
+
         public int CodMedicamentos { get; set; }
         [Key]
         [Column("CodMedicamentos")]
