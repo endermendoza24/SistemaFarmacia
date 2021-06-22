@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Inventario\" />
-    <Folder Include="Views\Personal\" />
   </ItemGroup>
 
 </Project>
