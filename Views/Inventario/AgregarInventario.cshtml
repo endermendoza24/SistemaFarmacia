@@ -32,7 +32,7 @@
                 <td>Costo preventa</td>
                 <td>Id presentacion</td>
                 <td>Id laboratorio</td>
-                <td>Id compra</td>                
+                <td>Id compra</td>
             </tr>
         </thead>
     </table>
@@ -103,33 +103,24 @@
                                 <span asp-validation-for="CostoPreventa" class="text-danger"></span>
                             </div>
 
-
-                            @*si llevara otro campo*@
-                            @*<div class="form-group col-md-6">
-            <label>Nombre</label>
-            <input asp-for="Nombrecategoria" class="form-control" placeholder="Nombres" />
-            <span asp-validation-for="Nombrecategoria" class="text-danger"></span>
-
-        </div>*@
-                        </div>
-                        @*<div class="form-group">
-                                <label>Descripcion</label>
-                                <input asp-for="Descripcion" class="form-control" placeholder="Descripcion" />
-                                <span asp-validation-for="Descripcion" class="text-danger"></span>
-                            </div>*@  @*como la descripcion es mas grande*@
-
-
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar Ventana</button>
                         <button type="submit" class="btn btn-success">G uardar Cambios</button>
                     </div>
-
-                </form>
-            </div>
-
+                </div>
+            </form>
         </div>
 
     </div>
+
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/JSInventario.js"></script>
+
+}
+
 
