@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemaDeFarmacia.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SistemaDeFarmacia.Models;
 
 namespace SistemaDeFarmacia
 {
@@ -39,6 +40,7 @@ namespace SistemaDeFarmacia
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDbContext<DbFarmaciaContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

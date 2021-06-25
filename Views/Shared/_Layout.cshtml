@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SistemaDeFarmacia</title>
-    <a href="~/Views/Medicamento/CrearMedicamentos.cshtml">~/Views/Medicamento/CrearMedicamentos.cshtml</a>
+   
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -34,8 +34,9 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Laboratorio" asp-action="Laboratorio.cshtml">Lab</a></li>
-                    
+                    <li><a asp-area="" asp-controller="Index" asp-action="AgregarInventario">Agregar Inventario</a></li>
+
+
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
@@ -44,7 +45,7 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
+    <div class="container body-content"> 
         @RenderBody()
         <hr />
         <footer>

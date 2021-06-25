@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemaDeFarmacia.Data;
 using SistemaDeFarmacia.Models;
 
+
 namespace SistemaDeFarmacia.Controllers
 {
     public class InventarioController : Controller
@@ -17,104 +18,33 @@ namespace SistemaDeFarmacia.Controllers
         {
             _db = db;
         }
-
-        // GET: Inventario
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
-
-        // GET: Inventario/Details/5
-        public ActionResult Details(int id)
+        public ActionResult AgregarInventario() //
         {
             return View();
         }
-
-        // GET: Inventario/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Inventario/Create
-        [HttpPost]
+        [HttpPost]//implicitamente es get para que sea post al que agregarselo
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CrearInventario(Inventario Inv)
+        public async Task<IActionResult> AgregarInventario(Inventario inventario)
         {
-            if (ModelState.IsValid) // valida si el modelo es correcto
+            if (ModelState.IsValid) //valida si el modelo es correcto
             {
-                await _db.Inventario.AddAsync(Inv); //  con esto se envía a la base de datos
-                await _db.SaveChangesAsync(); //  Guarda de forma asincrónica todos los cambios realizados en este contexto en la base de datos subyacente.
-                return RedirectToAction((nameof(CrearInventario))); //  esto redirecciona a la vista correspondiente
+                await _db.Inventario.AddAsync(inventario); //enviamos a la base de datos
+                await _db.SaveChangesAsync(); //especie de commit
+                return RedirectToAction((nameof(AgregarInventario))); // que redireccione a la vista crear
             }
-            return View(Inv); //  si los datos están malos retorna la vista con los datos
+            return View(inventario); //si los datos estan malos retorna la vista con los datos
         }
 
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Inventario/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Inventario/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Inventario/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Inventario/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
         [HttpGet]
         public async Task<IActionResult> MostrarTodos()
         {
-            var todas = await _db.CategoriaMedicamento.ToListAsync();
+            var todas = await _db.Inventario.ToListAsync();
             return Json(new { data = todas });
         }
-
     }
+
 }
