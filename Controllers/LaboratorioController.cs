@@ -20,7 +20,11 @@ namespace SistemaDeFarmacia.Controllers
         }
 
         // GET: Laboratorio
-        public ActionResult Index()
+        public IActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Laboratorio()
         {
             return View();
         }

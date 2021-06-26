@@ -39,12 +39,12 @@ namespace SistemaDeFarmacia.Controllers
             return View(inventario); //si los datos estan malos retorna la vista con los datos
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> MostrarTodos()
-        //{
-        //    var todas = await _db.Inventario.ToListAsync();
-        //    return Json(new { data = todas });
-        //}
+        [HttpGet]
+        public async Task<IActionResult> MostrarTodos()
+        {
+            var todas = await _db.Inventario.ToListAsync();
+            return Json(new { data = todas });
+        }
     }
 
 }

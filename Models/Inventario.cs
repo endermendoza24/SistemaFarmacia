@@ -19,7 +19,7 @@ namespace SistemaDeFarmacia.Models
 
         public DateTime FechaEntradaInventario { get; set; }
         [Required(ErrorMessage = "Debe incluir la fecha en el formato adecuado")]
-        [RegularExpression(@"([0][1-9]|[1][0-9|][2][0-9]|[3][0-1])\/([0][1-9]|[1][0-2])\/[1-2][0-9][0-9][0-9]")]
+        //[RegularExpression(@"([0][1-9]|[1][0-9|][2][0-9]|[3][0-1])\/([0][1-9]|[1][0-2])\/[1-2][0-9][0-9][0-9]")]
         public string NombreComercial { get; set; }
         [Required(ErrorMessage = "Debe ingresar el nombre comercial del medicamento")]
         [Column("NombreComercial")]
